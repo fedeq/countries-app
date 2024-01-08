@@ -1,6 +1,12 @@
-import {ModeToggle} from "@/components/ModeToggle";
-import {Button} from "@/components/ui/button";
+import {FilterSelect} from "@/components/FilterSelect";
+import {SearchInput} from "@/components/SearchInput";
+import {Input} from "@/components/ui/input";
 
 export default function Home() {
-  return <div className="">Hi</div>;
+  return (
+    <section className="flex items-center justify-between">
+      <SearchInput className="max-w-56" />
+      <FilterSelect />
+    </section>
+  );
 }
