@@ -1,14 +1,13 @@
 import {CountryCard} from "@/components/CountryCard";
-import {FilterSelect} from "@/components/FilterSelect";
+import {RegionSelect} from "@/components/RegionSelect";
 import {SearchInput} from "@/components/SearchInput";
-import {Input} from "@/components/ui/input";
 
 export default function Home() {
   return (
     <>
       <section className="flex items-center justify-between">
         <SearchInput className="max-w-56" />
-        <FilterSelect />
+        <RegionSelect />
       </section>
       <section className="mt-8">
         <CountryCard

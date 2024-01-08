@@ -1,3 +1,4 @@
+"use client";
 import {
   Select,
   SelectContent,
@@ -5,17 +6,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {useRegionFilter} from "@/hooks/useRegionFilter";
+import {regions} from "@/store/countries";
 
-const REGION_OPTIONS = ["Africa", "Americas", "Asia", "Europe", "Oceania"] as const;
+export function RegionSelect() {
+  const {regionFilter, setRegionFilter} = useRegionFilter();
 
-export function FilterSelect() {
   return (
-    <Select>
+    <Select value={regionFilter} onValueChange={setRegionFilter}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Filter by Region" />
       </SelectTrigger>
       <SelectContent>
-        {REGION_OPTIONS.map((region) => (
+        {regions.map((region) => (
           <SelectItem key={region} value={region}>
             {region}
           </SelectItem>

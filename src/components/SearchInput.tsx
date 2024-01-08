@@ -1,6 +1,8 @@
+"use client";
 import * as React from "react";
 
 import {cn} from "@/lib/utils";
+import {useSearchFilter} from "@/hooks/useSearchFilter";
 
 import {SearchIcon} from "./icons/SearchIcon";
 
@@ -8,6 +10,8 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 const SearchInput = React.forwardRef<HTMLInputElement, InputProps>(
   ({className, type, ...props}, ref) => {
+    const {searchFilter, setSearchFilter} = useSearchFilter();
+
     return (
       <div
         className={cn(
@@ -21,6 +25,8 @@ const SearchInput = React.forwardRef<HTMLInputElement, InputProps>(
           type={type}
           {...props}
           className="w-full bg-inherit p-2 placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+          value={searchFilter}
+          onChange={(e) => setSearchFilter(e.target.value)}
         />
       </div>
     );
