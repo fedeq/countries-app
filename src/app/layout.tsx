@@ -21,7 +21,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         >
           <div className="grid min-h-svh grid-rows-[auto,1fr,auto] bg-background font-sans antialiased">
             <Header />
-            <main className="container py-8">{children}</main>
+            <main className="container py-4 md:py-8">{children}</main>
             <footer className="text-center leading-[4rem] opacity-70">
               © {new Date().getFullYear()} countries-app
             </footer>
