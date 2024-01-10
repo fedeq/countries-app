@@ -43,14 +43,18 @@ export default function CountryDetailsPage({params}: {params: {id: string}}) {
         <LeftArrow className="mr-2" />
         Back
       </Button>
-      <div className="grid h-[500px] grid-cols-1 items-center justify-between gap-32 py-8 lg:grid-cols-2">
-        <img alt={country.name.common} className="h-auto w-full" src={country.flags.png} />
-        <div>
+      <div className="grid grid-cols-1 items-center justify-between py-8 lg:grid-cols-2 lg:gap-32">
+        <img
+          alt={country.name.common}
+          className="h-auto max-h-[500px] w-full"
+          src={country.flags.png}
+        />
+        <div className="space-y-4">
           <h1 className="py-8 text-3xl">
             <strong>{country.name.common}</strong>
           </h1>
-          <section className="grid grid-cols-1 gap-20 md:grid-cols-2">
-            <div className="flex flex-col gap-3 ">
+          <section className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-20">
+            <div className="flex flex-col gap-3">
               <div>
                 <span>
                   <strong>Native Name:</strong>{" "}
