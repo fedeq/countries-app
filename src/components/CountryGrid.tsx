@@ -1,9 +1,12 @@
 "use client";
 import Link from "next/link";
+import {lazy, Suspense} from "react";
 
 import {useCountries} from "@/hooks/useCountries";
 
-import {CountryCard} from "./CountryCard";
+import {CountryCardSkeleton} from "./CountryCard";
+
+const LazyCountryCard = lazy(() => import("./CountryCard"));
 
 export function CountryGrid() {
   const {filteredCountries} = useCountries();
@@ -13,14 +16,16 @@ export function CountryGrid() {
     <section className="grid grid-cols-[repeat(auto-fill,minmax(264px,1fr))] items-stretch justify-center gap-4 py-8">
       {filteredCountries.map((country) => (
         <Link key={country.cca3} href={`/countries/${country.cca3}`}>
-          <CountryCard
-            key={country.cca3}
-            capital={country.capital?.[0] || ""}
-            image={country.flags.png}
-            name={country.name.common}
-            population={country.population}
-            region={country.region}
-          />
+          <Suspense fallback={<CountryCardSkeleton />}>
+            <LazyCountryCard
+              key={country.cca3}
+              capital={country.capital?.[0] || ""}
+              image={country.flags.svg}
+              name={country.name.common}
+              population={country.population}
+              region={country.region}
+            />
+          </Suspense>
         </Link>
       ))}
     </section>
