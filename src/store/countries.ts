@@ -3,6 +3,8 @@ import type {Country, Region} from "@/types";
 import {create} from "zustand";
 import {devtools} from "zustand/middleware";
 
+import {fetchCountries} from "@/api";
+
 interface CountriesState {
   countries: Country[];
   searchFilter: string;
@@ -10,13 +12,6 @@ interface CountriesState {
   regionFilter: Region | "All" | undefined;
   setRegionFilter: (region: Region | "All") => void;
   fetchCountries: () => Promise<void>;
-}
-
-async function fetchCountries() {
-  const res = await fetch("https://restcountries.com/v3.1/all");
-  const countries = (await res.json()) as Country[];
-
-  return countries;
 }
 
 export const useCountriesStore = create<CountriesState, [["zustand/devtools", CountriesState]]>(
@@ -38,3 +33,9 @@ export const useCountriesStore = create<CountriesState, [["zustand/devtools", Co
     };
   }),
 );
+
+export function getCountryByCode(code: string) {
+  const countries = useCountriesStore.getState().countries;
+
+  return countries.find((country) => country.cca3 === code);
+}

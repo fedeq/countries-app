@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en">
+    <html className="" lang="en">
       <body>
         <ThemeProvider
           disableTransitionOnChange
@@ -19,7 +19,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           attribute="class"
           defaultTheme="system"
         >
-          <div className="grid min-h-svh grid-rows-[auto,1fr,auto] bg-background font-sans antialiased">
+          <div className="mx-auto grid min-h-svh w-[100vw] grid-rows-[auto,1fr,auto] bg-background font-sans antialiased">
             <Header />
             <main className="container py-4 md:py-8">{children}</main>
             <footer className="text-center leading-[4rem] opacity-70">
