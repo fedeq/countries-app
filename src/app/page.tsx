@@ -1,4 +1,3 @@
-import {CountryCard} from "@/components/CountryCard";
 import {CountryGrid} from "@/components/CountryGrid";
 import {RegionSelect} from "@/components/RegionSelect";
 import {SearchInput} from "@/components/SearchInput";
