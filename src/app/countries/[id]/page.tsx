@@ -47,7 +47,7 @@ export default function CountryDetailsPage({params}: {params: {id: string}}) {
         <img
           alt={country.name.common}
           className="h-auto max-h-[500px] w-full"
-          src={country.flags.png}
+          src={country.flags.svg}
         />
         <div className="space-y-4">
           <h1 className="py-8 text-3xl">
